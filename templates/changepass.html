@@ -1,0 +1,115 @@
+{% extends 'userpage.html' %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>menu</title>
+    <link rel="stylesheet" href="/static/css/2.css">
+    <link rel="stylesheet" href="/static/css/css3.css" />
+    <link rel="stylesheet" href="/static/css/boot.css" />
+    <link rel="stylesheet" href="/static/css/change password.css" />
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+  </head>
+    <style>
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .error{
+        color:red;
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <div class="im">
+      <div class="imageb">
+        <img src="/static/images/undraw_secure_login_pdn4.png" alt="" />
+      </div>
+      <div class="center">
+        <h1>Change Password</h1>
+        <form action="changepassword" onsubmit="return validateForm()" method="post">
+          {% csrf_token %}
+          <div class="txt_field">
+            <span></span>
+            <input type="password" name="newpass" id="npass" />
+            <label>New Password</label>
+          </div>
+          <p id="npass_error" class="error"></p>
+          <div class="txt_field">
+            <span></span>
+            <input type="password" name="cpass" id="conpass"/>
+            <label>Confirm Password</label>
+          </div>
+          <p id="cpass_error" class="error"></p>
+          {% if messages %}
+          {% for message in messages %}
+          {% if message.tags == 'error' %}
+          <div class="alert alert-danger" role="alert">
+              {{message}}
+          </div>
+              {% endif %}
+          {% endfor %}
+          {% endif %}
+          
+          <input type="submit" value="Save" />
+          <br /><br />
+        </form>
+      </div>
+    </div>
+    <script src="/static/js/vendor.bundle.base.js"></script>
+
+    <script src="/static/js/index.js">
+      let menuicn = document.querySelector(".menuicn");
+      let nav = document.querySelector(".navcontainer");
+
+      menuicn.addEventListener("click", () => {
+          nav.classList.toggle("navclose");
+      })
+    </script>
+    <script>
+          setTimeout(function() {
+        document.querySelectorAll('.alert-danger').forEach(function(element) {
+            element.style.display = 'none';
+        });
+    }, 5000);
+    function validateForm() {
+ // Prevent the form from submitting by default
+    // event.preventDefault();
+
+    // Get form input values
+    console.log("heloasdfjsdalf")
+    var newpass = document.getElementById("npass");
+    var cpassword = document.getElementById("conpass");
+    console.log("hello");
+
+        console.log(newpass.value);
+        var name_Error = document.getElementById("npass_error");
+        var no_Error= document.getElementById("cpass_error");
+
+        name_Error.innerHTML="";
+        no_Error.innerHTML="";
+
+
+        
+    // Perform validation
+    if (newpass.value === "") {
+      name_Error.innerHTML="please enter the new password ";
+      return false;
+    }
+    
+    if (cpassword.value === "" || cpassword.value === " ") {
+      no_Error.innerHTML="please enter the confirm password";
+        return false;
+    }
+    return true;
+}
+    </script>
+  </body>
+</html>
+{% endblock body %}

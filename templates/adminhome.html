@@ -1,0 +1,80 @@
+{% extends "index.html" %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+    {% block body %}
+    <div class="box-container">
+
+        <div class="box box1">
+            <div class="text">
+                <h2 class="topic-heading">{{staff}}</h2>
+                <h2 class="topic">staff</h2>
+            </div>
+
+            <img src="/static/images/user.gif" class="nav-img" alt="staff">
+        </div>
+
+        <div class="box box2">
+            <div class="text">
+                <h2 class="topic-heading">{{room}}</h2>
+                <h2 class="topic">room</h2>
+            </div>
+
+            <img src="/static/images/locker-room.gif" class="nav-img" alt="room">
+        </div>
+
+
+    </div>
+
+    <!-- <div class="report-container"> -->
+        <!-- <div class="report-header">
+            <h1 class="recent-Articles">Staff Information</h1>
+            <button class="view">View All</button>
+        </div> -->
+
+        <!-- <div class="report-body">
+            <div class="item1">
+                <h3 class="t-op">STAFF ID</h3>
+                <h3 class="t-op">STAFF NAME</h3>
+                <h3 class="t-op">DEPARTMENT</h3>
+                <h3 class="t-op">STATUS</h3>
+            </div>
+
+            <div class="items">
+                <div class="item1">
+                    <h3 class="t-op-nextlvl">101</h3>
+                    <h3 class="t-op-nextlvl">xyz</h3>
+                    <h3 class="t-op-nextlvl">cs</h3>
+                    <h3 class="t-op-nextlvl label-tag">attend</h3>
+                </div>
+
+
+
+                <div class="item1">
+                    <h3 class="t-op-nextlvl">102</h3>
+                    <h3 class="t-op-nextlvl">qqq</h3>
+                    <h3 class="t-op-nextlvl">com</h3>
+                    <h3 class="t-op-nextlvl label-tag">attend</h3>
+                </div>
+
+                <div class="item1">
+                    <h3 class="t-op-nextlvl">103</h3>
+                    <h3 class="t-op-nextlvl">fff</h3>
+                    <h3 class="t-op-nextlvl">cs</h3>
+                    <h3 class="t-op-nextlvl label-tag1">leave</h3>
+                </div>
+
+            </div>
+        </div> -->
+    <!-- </div> -->
+    {% endblock body %}
+</body>
+</html>

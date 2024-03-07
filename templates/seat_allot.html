@@ -1,0 +1,185 @@
+{% extends 'index.html' %} {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seat_allotment</title>
+  </head>
+  <style>
+
+  
+  
+ 
+    #my-button{
+    
+    border: 1px solid #3aafa9;
+    height: 2.4rem;
+    width: 5rem;
+    background-color: #3aafa9;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 3px 3px 10px #3aafa9;
+    color: #feffff;
+    background-image: linear-gradient(45deg);
+    background-image: linear-gradient(
+      45deg,
+      #2b7a78 0%,
+      #61bcb3 51%,
+      #2b7a78 100%
+    );
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    }
+   
+    .head{
+      width: 100%;
+      margin:2% 0;
+  height: 30%;
+  border: 2px solid whitesmoke;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+    }
+    .head>div{
+      height: 2.4rem;
+      border-radius: 2px;
+      background-color: #3aafa9;
+      transition: transform 0.3s ease-in-out;
+    box-shadow: 3px 3px 10px #3aafa9;
+    color: #feffff;
+    background-image: linear-gradient(45deg);
+    background-image: linear-gradient(
+      45deg,
+      #2b7a78 0%,
+      #61bcb3 51%,
+      #2b7a78 100%
+    );
+      display:block;
+  width: 20%;
+  margin: 5px;
+  text-align: center;
+    }
+   .content_center{
+    text-align: center;
+   }
+    .submit:hover {
+      background-position: right center;
+      /* change the direction of the change here */
+      color: #b8d8d7;
+      text-decoration: none;
+      transform: scale(1.05) rotate(-1deg);
+    }
+
+  .alert{
+    width: 100%;
+  }
+ .container_div{
+  width: 100%;
+  height: 30%;
+  border: 2px solid whitesmoke;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+ }
+ .container_div > div{
+  display:block;
+  width: 20%;
+  margin: 5px;
+  text-align: center;
+ }
+  </style>
+  <body>
+    <h3 style="text-align: center;">Automatic room allotment</h3>
+    <div>
+    
+
+      <form action="/addallotment" method="post">
+        {% csrf_token %}
+        <div id="heading" class="head">
+        
+
+          <div>Room no</div>
+          <div>Staff id</div>
+          <div>Time table id</div>
+          <div>Student capacity</div>
+          <div>Date</div>
+        </div>
+        <div class="container_div">
+          <div class="yobj">
+            {% for y in object2_list %}
+            <input type="text" name="y" value="{{y}}" />
+            <br />
+            {% endfor %}
+          </div>
+         
+          <div class="wobj">
+            {% for w in object4_list %}
+            <input type="text" name="w" value="{{w}}" />
+            <br />
+            {% endfor %}
+          </div>
+          <div class="zobj">
+            {% for z in object3_list %}
+            <input type="text" name="z" value="{{z}}" />
+            <br />
+            {% endfor %}
+          </div>
+          <div class="xobj">
+            {% for x in object1_list %}
+            <input type="text" name="x" value="{{x}}" />
+            <br />
+            {% endfor %}
+          </div>
+        <div class="aobj">
+          {% for a in object5_list %}
+          <input type="text" name="a" value="{{a}}" />
+          <br />
+          {% endfor %}
+         
+      </div>
+    </div>
+  </div>
+  <input type="hidden" name="xobj" value="{{ object1_list }}" />
+  <input type="hidden" name="yobj" value="{{ object2_list }}" />
+  <input type="hidden" name="zobj" value="{{ object3_list }}" />
+  <input type="hidden" name="wobj" value="{{object4_list}}">
+  <input type="hidden" name="aobj" value="{{object5_list}}">
+  <div class="content_center">
+    <button  id="my-button" type="submit">Add</button>
+
+  </div>
+  
+  
+</form>
+<div class="message">
+  {% if messages %}
+  {% for message in messages %}
+          {% if message.tags == 'error' %}
+          <div class="alert alert-danger" role="alert">
+        {{message}}
+      </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if messages %}
+    {% for message in messages %}
+          {% if message.tags == 'success' %}
+          <div class="alert alert-success" role="alert">
+        {{message}}
+      </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>
+</div>
+  </body>
+</html>
+{% endblock body %}

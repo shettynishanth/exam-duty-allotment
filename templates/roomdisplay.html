@@ -1,0 +1,62 @@
+{% extends "index.html" %} {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  </head>
+  <style>
+    table,
+    td,
+    th {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 3px;
+      text-align: center;
+    }
+   table{
+      margin-left: 10%;
+      margin-top: 1%;
+      width: 80%;
+      height: max-content;
+      background-color: aliceblue
+   }
+   th{
+      background-color: #3aafa9;
+   }
+  </style>
+  <body>
+    <h3 style="text-align: center;">Total Rooms</h3>
+    {% if messages %}
+          {% for message in messages %}
+          {% if message.tags == 'success' %}
+          <div class="alert alert-success" role="alert">
+              {{message}}
+          </div>
+              {% endif %}
+          {% endfor %}
+          {% endif %}
+    <table>
+      <tr>
+        <th>Room No</th>
+        <th>Room Name</th>
+        <th>Department</th>
+
+      </tr>
+
+      {% for st in roomdis %}
+      <tr>
+        <td>{{st.roomno}}</td>
+        <td>{{st.roomloc}}</td>
+        <td>{{st.dept}}</td>
+      </tr>
+      <br />
+      {% endfor %}
+    </table>
+    {% endblock body %}
+  </body>
+  <script src="/static/js/bootstrap.min.js"></script>
+</html>

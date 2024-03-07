@@ -1,0 +1,364 @@
+{% extends 'index.html' %} {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .scroll-container {
+      margin-left: 5%;
+      height: 300px;
+      /* Set the desired height for the container */
+      width: 70%;
+      /* Set the desired width for the container */
+      overflow: auto;
+      /* Enable the scrollbar */
+    }
+
+    h2 {
+      position: relative;
+      margin-left: 35%;
+      margin-top: 3%;
+      border-bottom: 1px solid gray;
+      width: max-content;
+    }
+    .label {
+      position: relative;
+      left: 30%;
+    }
+    table th {
+      background-image: linear-gradient(45deg);
+      background-image: linear-gradient(
+        45deg,
+        #2b7a78 0%,
+        #61bcb3 51%,
+        #2b7a78 100%
+      );
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 3px;
+      text-align: center;
+    }
+
+    .tbody {
+      position: absolute;
+      height: 90%;
+      margin-left: 5%;
+      border: 1px solid gray;
+      width: 70%;
+      border-radius: 50px;
+      align-items: center;
+      box-shadow: 3px 3px 10px #3aafa9;
+    }
+    .nish {
+      position: absolute;
+      left: 40%;
+      top: 40%;
+    }
+
+    table {
+      margin-left: 15%;
+      margin-top: 10%;
+      width: 60%;
+      height: max-content;
+      border-radius: 10px;
+      background-color: #feffff;
+    }
+    .subm {
+      position: relative;
+      border: 1px solid #3aafa9;
+      height: 2rem;
+      width: 8rem;
+      background-color: #3aafa9;
+      border-radius: 10px;
+      left: 40%;
+      /* margin-top: 3%; */
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      box-shadow: 3px 3px 10px #3aafa9;
+      color: #feffff;
+      background-image: linear-gradient(45deg);
+      background-image: linear-gradient(
+        45deg,
+        #2b7a78 0%,
+        #61bcb3 51%,
+        #2b7a78 100%
+      );
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    .objectc {
+      position: relative;
+      left: 8%;
+      border-radius: 10px;
+      border: 2px solid rgb(44, 40, 40);
+    }
+    .submit {
+      position: relative;
+      border: 1px solid #3aafa9;
+      height: 2rem;
+      width: 5rem;
+      background-color: #3aafa9;
+      border-radius: 10px;
+      left: 55%;
+      /* margin-top: 3%; */
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      box-shadow: 3px 3px 10px #3aafa9;
+      color: #feffff;
+      background-image: linear-gradient(45deg);
+      background-image: linear-gradient(
+        45deg,
+        #2b7a78 0%,
+        #61bcb3 51%,
+        #2b7a78 100%
+      );
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .submit:hover {
+      background-position: right center;
+      /* change the direction of the change here */
+      color: #b8d8d7;
+      text-decoration: none;
+      transform: scale(1.05) rotate(-1deg);
+    }
+
+    td {
+      background-color: #feffff;
+    }
+
+    text {
+      position: absolute;
+      width: 100%;
+    }
+    object {
+      border: 2px solid rgb(47, 183, 172);
+      border-radius: 2px;
+    }
+    .error {
+      color: red;
+    }
+    #fileObject {
+      display: none;
+    }
+    #fileinput {
+      width: 3rem;
+      margin: auto 0;
+    }
+    .file-input-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 3rem 24rem;
+    }
+
+    .file-input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+
+    .file-input-label {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #eaeaea;
+      color: #333;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .file-input-label:hover {
+      background-color: #d5d5d5;
+    }
+
+    .file-input-label::after {
+      content: "Browse";
+      margin-left: 5px;
+    }
+  </style>
+  <body>
+    <h2>PDF TO TEXT</h2>
+    <form method="post" action="pdf_to_text" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="file-input-wrapper">
+        <input
+          type="file"
+          id="fileinput"
+          name="pdftext"
+          class="file-input"
+          onchange="displayFile(this)"
+        />
+        <label for="fileinput" class="file-input-label">Choose a file</label>
+      </div>
+
+      <object
+        class="objectc"
+        id="fileObject"
+        type="application/pdf"
+        width="80%"
+        height="600rem"
+      ></object>
+      {{text}}
+      <!-- <button  type="submit" id="myButton1" disabled >Upload</button> -->
+    </form>
+    <div class="inputrows">
+      <label class="label" for="rows">Number of Rows:</label>
+      <input class="label" type="number" id="rows" />
+    </div>
+    <p id="validationMessage" class="error"></p>
+    <br />
+
+    <button class="subm" onclick="generateTable()" id="validateButton">
+      Generate Table
+    </button>
+    <form action="timetableinsertion" method="post">
+      {% csrf_token %}
+      <div id="tableContainer"></div>
+      <p id="tableerror" class="error"></p>
+      <input type="hidden" id="hide" name="hide" />
+      
+      <button class="submit" type="submit" id="myButton" style="display: none">
+        submit
+        </button>
+    </form>
+  </body>
+  <script>
+    const validateButton1 = document.getElementById("myButton");
+    validateButton.addEventListener("click", validateInputs);
+
+    // Step 3: Validation logic
+    function validateInputs() {
+      const textInputs = document.querySelectorAll(".tablegroup");
+      let isValid = true;
+
+      textInputs.forEach((input) => {
+        const value = input.value;
+
+        if (value.trim() === "") {
+          isValid = false;
+          input.classList.add("invalid");
+        } else {
+          input.classList.remove("invalid");
+        }
+      });
+    }
+
+    const inputs = document.querySelectorAll(".tablegroup");
+    inputs.forEach((input) => {
+      input.addEventListener("blur", validateInput);
+    });
+
+    function validateInput(event) {
+      // const input = event.target;
+      const value = input.value;
+      const val = document.getElementById("tableerror");
+
+      val.innerHTML = "";
+
+      if (value.trim() === "") {
+        // Handle empty input
+        val.innerHTML = "please enter fill content";
+      } else {
+        // Valid input
+        val.innerHTML = "";
+      }
+    }
+
+    function displayFile(input) {
+      if (input.files && input.files[0]) {
+        var fileObject = document.getElementById("fileObject");
+        var fileURL = URL.createObjectURL(input.files[0]);
+        fileObject.setAttribute("data", fileURL);
+
+        if (input.files[0]) {
+          fileObject.style.display = "block";
+        } else {
+          fileObject.style.display = "none";
+        }
+        enableButton1();
+      }
+    }
+    function enableButton1() {
+      var button = document.getElementById("myButton1");
+      button.disabled = false;
+    }
+    function enableButton() {
+      var button = document.getElementById("myButton");
+      button.style.display = "block";
+    }
+    const inputField = document.getElementById("rows");
+    const validateButton = document.getElementById("validateButton");
+    const validationMessage = document.getElementById("validationMessage");
+    validateButton.addEventListener("click", validateInput);
+
+    // Function to validate the input
+    function validateInput() {
+      // Get the value from the input field
+      const inputValue = inputField.value.trim();
+
+      // Perform your validation logic here
+      if (inputValue === "") {
+        validationMessage.textContent = "Input is required.";
+      } else {
+        validationMessage.textContent = "";
+      }
+    }
+
+    function generateTable() {
+      // Get user input values
+      var rows = parseInt(document.getElementById("rows").value);
+      const hiddeninput = document.getElementById("hide");
+      hiddeninput.value = rows;
+      // Generate the table HTML
+      var tableHtml = "<table>";
+      tableHtml +=
+        "<tr><th>timetable id</th><th>subject id</th><th>date</th><th>time</th><th>exam type</th><th>student capacity</th></tr>";
+      j = 0;
+      for (var i = 0; i < rows; i++) {
+        tableHtml += "<tr>";
+        tableHtml +=
+          "<td><input type='number' class='tablegroup' id='cell' name='cell(" +
+          i.toString() +
+          "1)'></td>";
+        tableHtml +=
+          "<td><input type='number' class='tablegroup' id='cell' name='cell(" +
+          i.toString() +
+          "2)'></td>";
+        tableHtml +=
+          "<td><input type='date' class='tablegroup' id='cell' name='cell(" +
+          i.toString() +
+          "3)'></td>";
+        tableHtml +=
+          "<td><input type='time' class='tablegroup' id='cell' name='cell(" +
+          i.toString() +
+          "4)'></td>";
+        tableHtml +=
+          "<td><select  class='tablegroup' name='cell(" +
+          i.toString() +
+          "5)'><option value='internal'>Internal</option><option value='Lab internal'>Lab internal </option><option value='final'>final</option><option value='final lab'>final lab</option></select></td>";
+
+        tableHtml +=
+          "<td><input type='number' class='tablegroup' id='cell' name='cell(" +
+          i.toString() +
+          "6)'></td>";
+        j++;
+        tableHtml += "</tr>";
+      }
+      tableHtml += "</table>";
+
+      // Set the table HTML to the designated container
+      document.getElementById("tableContainer").innerHTML = tableHtml;
+      enableButton();
+    }
+  </script>
+</html>
+
+{% endblock body %}

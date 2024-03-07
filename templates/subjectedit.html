@@ -1,0 +1,801 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>menu</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/2.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/font.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+
+<!-- <link rel="stylesheet" href="css/3.css"> -->
+<link rel="stylesheet" href="/static/css/bootstrap-reboot.min.css">
+<link rel="stylesheet" href="/static/css/boot.css">
+<style>
+        html {
+            font-family: 'Poppins', sans-serif;
+        }
+        .logo{
+            /* font-family: 'Playfair Display', serif;
+            font-family: 'Roboto', sans-serif; */
+            font-family: 'Poppins', sans-serif;
+
+        }
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Poppins", sans-serif;
+        }
+        .error{
+          color: red;
+        }
+      
+        body {
+      
+          background-color: #feffff;
+          height: 100vh;
+          overflow: hidden;
+        }
+      
+        .im {
+          position: absolute;
+          left: 20%;
+          top: 60px;
+          width: 100%;
+          height: 100%;
+          border: 1px solid white;
+          border-radius: 0px;
+          background-color: #feffff;
+          background-image: url("/static/images/s11.png");
+          /* display: inline; */
+          background-repeat: no-repeat;
+        }
+      
+        form {
+          display: block;
+          height: 50%;
+        }
+      
+        .im .center {
+          position: absolute;
+          top: 42%;
+          left:57%;
+          transform: translate(-50%, -50%);
+          width: 400px;
+          /* height: 1rem; */
+          background: white;
+          border-radius: 10px;
+          box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
+        }
+      
+        .center h1 {
+          text-align: center;
+          padding: 10px 0;
+          /* border-bottom: 1px solid silver; */
+        }
+      
+        .center form {
+          padding: 0 40px;
+          box-sizing: border-box;
+        }
+      
+        form .txt_field {
+          position: relative;
+          border-bottom: 2px solid #adadad;
+          margin: 1.3rem 0;
+        }
+      
+        .txt_field input {
+          width: 100%;
+          padding: 0 5px;
+          height: 15px;
+          font-size: 16px;
+          border: none;
+          background: none;
+          outline: none;
+        }
+      
+        .txt_field label {
+          position: absolute;
+          top: 50%;
+          left: 5px;
+          color: #adadad;
+          transform: translateY(-50%);
+          font-size: 16px;
+          pointer-events: none;
+          transition: 1s;
+        }
+      
+        .txt_field span::before {
+          content: "";
+          position: absolute;
+          top: 40px;
+          left: 0;
+          width: 0%;
+          height: 2px;
+          background: #2691d9;
+          transition: 0.5s;
+        }
+      
+        .txt_field input:focus~label,
+        .txt_field input:valid~label {
+          top: -5px;
+          color: #2691d9;
+        }
+      
+        .txt_field input:focus~span::before,
+        .txt_field input:valid~span::before {
+          width: 100%;
+        }
+      
+        .pass {
+          margin: -5px 0 20px 5px;
+          color: #a6a6a6;
+          cursor: pointer;
+        }
+      
+        .pass:hover {
+          text-decoration: underline;
+        }
+      
+        input[type="submit"] {
+          width: 40%;
+          height: 45px;
+          border: 1px solid;
+          background: #17252a;
+          border-radius: 25px;
+          font-size: 18px;
+          color: #e9f4fb;
+          font-weight: 700;
+          cursor: pointer;
+          outline: none;
+        }
+      
+        input[type="submit"]:hover {
+          border-color: #2691d9;
+          transition: 0.5s;
+        }
+      
+        button {
+          position: relative;
+          width: 40%;
+          height: 45px;
+          left: 54%;
+          top: -43px;
+          bottom: 2.8rem;
+          border: 1px solid;
+          background: #17252a;
+          border-radius: 25px;
+          text-decoration: none;
+          font-size: 18px;
+          color: #e9f4fb;
+          font-weight: 700;
+          cursor: pointer;
+          outline: none;
+          text-align: center;
+        }
+      
+        button a {
+          text-decoration: none;
+          color: #e9f4fb;
+        }
+      
+        button:hover {
+          border-color: #2691d9;
+          transition: 0.5s;
+        }
+      
+        input[type="fetch"] {
+          position: relative;
+          width: 40%;
+          height: 45px;
+          left: 25%;
+          border: 1px solid;
+          background: #17252a;
+          border-radius: 25px;
+          font-size: 18px;
+          color: #e9f4fb;
+          font-weight: 700;
+          cursor: pointer;
+          outline: none;
+          text-align: center;
+        }
+      
+        button:hover {
+          border-color: #2691d9;
+          transition: 0.5s;
+        }
+      
+      
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        :root {
+            --background-color1: #fafaff;
+            /* --background-color2: #17252a; */
+            --background-color3: #ededed;
+            --background-color4: #feffff;
+            --primary-color: #3aafa9;
+            --secondary-color: #3aafa9;
+            --Border-color: #3aafa9;
+            --one-use-color: #3aafa9;
+            --two-use-color: #3aafa9;
+        }
+
+        body {
+            background-color: var(--background-color4);
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        header {
+            height: 80px;
+            width: 100vw;
+            padding: 0 30px;
+            background-color: var(--background-color1);
+            position: fixed;
+            z-index: 100;
+            box-shadow: 1px 1px 15px #3aafa9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 600;
+            color: #3aafa9;
+
+
+        }
+
+        .icn {
+            height: 30px;
+
+        }
+
+        .menuicn {
+            cursor: pointer;
+        }
+
+        .searchbar,
+        .message,
+        .logosec {
+            display: flex;
+
+            align-items: s;
+            justify-content: center;
+
+        }
+
+        .searchbar2 {
+            display: none;
+        }
+
+        .logosec {
+            gap: 60px;
+        }
+
+        .main-container {
+            display: flex;
+            width: 100vw;
+            position: relative;
+            top: 70px;
+            z-index: 1;
+        }
+
+        .dpicn {
+            height: 42px;
+        }
+
+        .main {
+            height: calc(100vh - 70px);
+            width: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding: 40px 3px 0px 70px;
+        }
+
+
+
+        .main::-webkit-scrollbar-thumb {
+            background-image:
+                linear-gradient(to bottom, rgb(0, 0, 85), rgb(0, 0, 50));
+        }
+
+        .main::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .main::-webkit-scrollbar-track {
+            background-color: #9e9e9eb2;
+        }
+
+        .box-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1px;
+        }
+
+        .nav {
+            min-height: 91vh;
+            width: 250px;
+            background-color: var(--background-color2);
+            position: absolute;
+            top: 0px;
+            left: 00;
+            box-shadow: #3aafa9;
+            /* box-shadow: 1px 1px 10px rgba(198, 189, 248, 0.825); */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: 30px 0 20px 10px;
+        }
+
+        .navcontainer {
+            height: calc(100vh - 70px);
+            width: 270px;
+            position: relative;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            transition: all 0.5s ease-in-out;
+            box-shadow: 3px 3px 10px #2b7a78;
+        }
+
+        .navcontainer::-webkit-scrollbar {
+            display: none;
+        }
+
+        .navclose {
+            width: 80px;
+        }
+
+        .nav-option {
+            width: 250px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 30px 0 20px;
+            gap: 20px;
+            transition: all 0.1s ease-in-out;
+
+        }
+
+        .nav-option:hover {
+            border-left: 5px solid #010058af;
+            /* background-color: #c4bfbf; */
+            background-color: #3aafa9;
+            cursor: pointer;
+        }
+
+        .nav-img {
+            height: 38px;
+            border-radius: 38px;
+        }
+
+        .nav-upper-options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            font-size: 10px;
+        }
+
+        .option1 {
+            /* border-left: 5px solid #010058af; */
+            /* background-color: var(--Border-color); */
+            color: black;
+            cursor: pointer;
+        }
+
+        /* .option1:hover {
+	border-left: 5px solid #010058af;
+	background-color: var(--Border-color);
+} */
+
+        .box {
+            height: 130px;
+            width: 230px;
+            border-radius: 20px;
+            box-shadow: 3px 3px 10px #2b7a78;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .box:hover {
+            transform: scale(1.08);
+        }
+
+        .box:nth-child(1) {
+            background-color: var(--one-use-color);
+        }
+
+        .box:nth-child(2) {
+            background-color: var(--two-use-color);
+        }
+
+        .box:nth-child(3) {
+            background-color: var(--one-use-color);
+        }
+
+        .box:nth-child(4) {
+            background-color: var(--two-use-color);
+        }
+
+        .box img {
+            height: 50px;
+        }
+
+        .box .text {
+            color: white;
+        }
+
+        .topic {
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .topic-heading {
+            font-size: 30px;
+            letter-spacing: 3px;
+        }
+
+        .report-container {
+            min-height: 300px;
+            max-width: 1200px;
+            margin: 70px auto 0px auto;
+            background-color: #ffffff;
+            border-radius: 30px;
+            box-shadow: 3px 3px 10px rgb(188, 188, 188);
+            padding: 0px 20px 20px 20px;
+        }
+
+        .report-header {
+            height: 80px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 20px 10px 20px;
+
+            border-bottom: 2px solid #3aafa9;
+        }
+
+        .recent-Articles {
+            font-size: 30px;
+            font-weight: 600;
+            color: #3aafa9;
+        }
+
+        .view {
+            height: 35px;
+            width: 90px;
+            border-radius: 8px;
+            background-color: #3aafa9;
+            color: white;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .report-body {
+            max-width: 1160px;
+            overflow-x: auto;
+            padding: 20px;
+        }
+
+
+        .item1 {
+            width: 1120px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .t-op {
+            font-size: 18px;
+            letter-spacing: 0px;
+            color: #3aafa9;
+        }
+
+        .items {
+            width: 1120px;
+            margin-top: 15px;
+        }
+
+        .item1 {
+            margin-top: 20px;
+        }
+
+        .t-op-nextlvl {
+            font-size: 14px;
+            letter-spacing: 0px;
+            font-weight: 600;
+        }
+
+        .label-tag {
+            width: 100px;
+            text-align: center;
+            background-color: rgb(0, 177, 0);
+            color: white;
+            border-radius: 4px;
+        }
+
+        .label-tag1 {
+            width: 100px;
+            text-align: center;
+            background-color: rgb(205, 18, 18);
+            color: white;
+            border-radius: 4px;
+        }
+
+        .text {
+            font-size: large;
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header>
+    
+        <div class="logo">
+            Bhandarkar's Arts And Science College Kundapur
+        </div>
+
+
+
+    </header>
+    <div class="main-container">
+        <div class="navcontainer">
+            <nav class="nav">
+                <div class="nav-upper-options">
+                    <div class="nav-option option1">
+                        <img src="/static/images/smart-house.gif" class="nav-img" alt="home">
+                        <a class="link1" href="/home">
+                            <h3 class="text">
+                                <h3 class="text"> home</h3>
+                        </a>
+                    </div>
+
+                    <div class="option2 nav-option">
+                        <img src="/static/images/locker-room.gif" class="nav-img" alt="room">
+                        <a class="link1" href="room_management">
+                            <h3 class="text">room management</h3>
+                        </a>
+                    </div>
+
+                    <div class="nav-option option3">
+                        <img src="/static/images/user.gif" class="nav-img" alt="staff">
+                        <a class="link1" href="staff_management">
+                            <h3 class="text">staff management</h3>
+                        </a>
+                    </div>
+
+                    <div class="nav-option option4">
+                        <img src="/static/images/book.gif" class="nav-img" alt="exam">
+                        <a class="link1" href="exam_management">
+                            <h3 class="text">exam management</h3>
+                        </a>
+                    </div>
+                    <div class="nav-option option4">
+                        <img src="/static/images/math.gif" class="nav-img" alt="exam">
+                        <a class="link1" href="subject_management">
+                            <h3 class="text">subject management</h3>
+                        </a>
+                    </div>
+                    <div class="nav-option option4">
+                        <img src="/static/images/book.gif" class="nav-img" alt="exam">
+                        <a class="link1" href="roomallot_management">
+                            <h3 class="text">room allot management</h3>
+                        </a>
+                    </div>
+                    <div class="nav-option option5">
+                        <img src="/static/images/books.gif" class="nav-img" alt="status">
+                        <a href="/viewall">
+                            <h3 class="text"> status</h3>
+                        </a>
+                    </div>
+
+
+
+                    <div class="nav-option logout">
+                        <img src="/static/images/logout.gif" class="nav-img" alt="logout">
+                        <a href="/logout">
+                            <h3 class="text">Logout</h3>
+                        </a>
+
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+
+
+        <div class="main">
+          <div class="im">
+            <!-- <div class="image"><img src="/static/images/s0.png" alt="" /></div> -->
+            <div class="center">
+              <h1>Edit and Update Subject</h1>
+              <form action="/subjectedit" onsubmit="return validateForm1()" method="post">
+                {% csrf_token %}
+                <div class="txt_field">
+                  <span></span>
+                  <input type="text" name="subid" id="fnum" />
+                  <label>SubID</label>
+                </div>
+                {% if messages %}
+                                {% for message in messages %}
+                                {% if message.tags == 'error' %}
+                                <div class="alert alert-danger" role="alert">
+                                    {{message}}
+                                </div>
+                                    {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                  <p id="fnum_error" class="error"></p>
+                <input type="submit" value="fetch" />
+              </form>
+        
+        
+        
+              <form action="/subjectupdate/{{st.subid}}" method="post" onsubmit="return validateForm()">
+                {% csrf_token %}
+                <div class="txt_field">
+                  <span></span>
+                  <input type="text" name="subid" value="{{st.subid}}" id="nsubid" readonly="true" />
+                  <label>subid</label>
+                </div>
+                <p id="subid_error" class="error"></p>
+                <div cla <div class="txt_field">
+                  <span></span>
+                  <input type="text" name="subcode" value="{{st.subcode}}" id="subcode" />
+                  <label>subcode</label>
+                </div>
+                <p id="subcode_error" class="error"></p>
+                <div class="txt_field">
+                  <span></span>
+                  <input type="text" name="subname" value="{{st.subname}}" id="subname" />
+                  <label>subname</label>
+                </div>
+                <p id="subname_error" class="error"></p>
+                <div class="txt_field">
+                  <span></span>
+                  <input type="text" name="stream" value="{{st.stream}}" id="stream" />
+                  <label>stream</label>
+                </div>
+        
+                <p id="substream_error" class="error"></p>
+                {% if messages %}
+                  {% for message in messages %}
+                  {% if message.tags == 'success' %}
+                  <div class="alert alert-success" role="alert">
+                      {{message}}
+                  </div>
+                      {% endif %}
+                  {% endfor %}
+                  {% endif %}
+                <input type="submit" value="submit" /> <br />
+                <button><a href="subjectdelete/{{st.subid}}">delete</a></button>
+              </form>
+              <!-- <form action="/subjectdelete" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="subcode" value="{{st.subcode}}">
+                <!-- <input type="submit" value="delete"> -->
+                <!-- <button type="submit">delete</button>
+                <br /><br />
+              </form> --> 
+        
+        
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="/static/js/vendor.bundle.base.js"></script>
+
+
+
+    <script src="/static/js/index.js">
+        let menuicn = document.querySelector(".menuicn");
+        let nav = document.querySelector(".navcontainer");
+
+        menuicn.addEventListener("click", () => {
+            nav.classList.toggle("navclose");
+        })
+        function validateForm() {
+          // Prevent the form from submitting by default
+             // event.preventDefault();
+         
+             // Get form input values
+             var roomno = document.getElementById("nsubid");
+             var roomloc = document.getElementById("subcode");
+             var dept = document.getElementById("subname");
+             var dept1 = document.getElementById("stream");
+         
+                 console.log(roomloc.value)
+                 var name_Error = document.getElementById("subid_error");
+                 var no_Error= document.getElementById("subcode_error");
+                 var dept_Error= document.getElementById("subname_error");
+                 var dept_Error1= document.getElementById("substream_error");
+                 name_Error.innerHTML="";
+                 no_Error.innerHTML="";
+                 dept_Error.innerHTML="";
+                 dept_Error1.innerHTML="";
+                 
+             // Perform validation
+             if (roomno.value === "") {
+                 no_Error.innerHTML="please enter the subject id";
+                 return false;
+             }
+             
+             if (roomloc.value === "" || roomloc.value === " ") {
+                 name_Error.innerHTML="please enter the subject code";
+                 return false;
+             }
+             if (dept.value === "" || dept.value === " ") {
+                 dept_Error.innerHTML="please enter the subject name"
+                 return false;
+             }
+             if (dept1.value === "" || dept1.value === " ") {
+                 dept_Error1.innerHTML="please enter the stream"
+                 return false;
+             }
+         
+         
+             // Additional validation logic...
+         
+             return true;
+         }
+         
+         
+           setTimeout(function () {
+             document.querySelectorAll(".alert-danger").forEach(function (element) {
+               element.style.display = "none";
+             });
+           }, 5000);
+           function validateForm1() {
+             var roomno = document.getElementById("fnum");
+             var name_Error = document.getElementById("fnum_error");
+             name_Error.innerHTML = "";
+             if (roomno.value === "") {
+               name_Error.innerHTML = "please enter the room number";
+               return false;
+             }
+             return true;
+           }
+    </script>
+</body>
+
+</html>

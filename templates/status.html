@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% block body %}
+<style>
+  table,
+    td,
+    th {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 3px;
+      text-align: center;
+    }
+   table{
+      margin-left: 10%;
+      margin-top: 1%;
+      width: 80%;
+      height: max-content;
+      background-color: aliceblue
+   }
+   th{
+      background-color: #3aafa9;
+   }
+   h2 {
+      position: relative;
+      margin-left: 35%;
+      margin-top: 3%;
+      border-bottom: 1px solid gray;
+      width: max-content;
+    }
+</style>
+<body>
+  <table>
+  <h2> Room allotment status</h2>
+<tr><th>roomno</th><th>teacher id</th><th>timetable id</th><th>student alloted</th><th>exam time</th></tr>
+  {% for od in roomobj1 %}
+    <tr> <td>{{od.roomno}}</td> <td>{{od.staff_id}}</td><td>{{od.tid}}</td><td>{{od.student_alloted}}</td><td>{{od.room_exam_date}}</td></tr>
+  {% endfor %}
+</table>
+</body>
+{% endblock body %}

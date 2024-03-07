@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>login page</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+  </head>
+  <style>
+    .error{
+      color: red;
+    }
+  </style>
+  <body>
+    <div class="center">
+      <h1>Login</h1>
+      <form method="post" onsubmit="return validateForm()" action="/login">
+        {% csrf_token %}
+        <div class="txt_field">
+          <input type="text" name="username" id="username">
+          <label>Username</label>
+        </div>
+        <p id="uname" class="error"></p>
+        <div class="txt_field">
+          <input type="password" name="password" id="password">
+          <label>Password</label>
+        </div>
+        <p id="pass" class="error"></p>
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+            {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% if messages %}
+          {% for message in messages %}
+          {% if message.tags == 'success' %}
+          <div class="alert alert-success" role="alert">
+              {{message}}
+          </div>
+              {% endif %}
+          {% endfor %}
+          {% endif %}
+        <input type="submit" value="Login">
+       
+      </form>
+    </div>
+
+  </body>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script>
+           setTimeout(function() {
+        document.querySelectorAll('.alert-danger').forEach(function(element) {
+            element.style.display = 'none';
+        });
+    }, 5000);
+
+    setTimeout(function() {
+        document.querySelectorAll('.alert-success').forEach(function(element) {
+            element.style.display = 'none';
+        });
+    }, 5000);
+    function validateForm() {
+ // Prevent the form from submitting by default
+    // event.preventDefault();
+
+    // Get form input values
+    var roomno = document.getElementById("username");
+    var roomloc = document.getElementById("password");
+
+        console.log(roomloc.value)
+        var name_Error = document.getElementById("uname");
+        var no_Error= document.getElementById("pass");
+
+        name_Error.innerHTML="";
+        no_Error.innerHTML="";
+
+
+        
+    // Perform validation
+    if (roomno.value === "") {
+      name_Error.innerHTML="please enter the username ";
+      return false;
+    }
+    
+if (roomloc.value === "" || roomloc.value === " ") {
+      no_Error.innerHTML="please enter the password";
+        return false;
+    } 
+
+
+    // Additional validation logic...
+
+    return true;
+}
+  </script>
+</html>

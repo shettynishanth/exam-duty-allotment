@@ -1,0 +1,494 @@
+{% extends 'index.html' %} {% block body %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>exam</title>
+    <!-- <link rel="stylesheet" href="css/romm.css"> -->
+    <!-- <link rel="stylesheet" href="{% static 'css/2.css' %}" /> -->
+    <link rel="stylesheet" href="{% static 'css/3.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/boot.css' %}" />
+    <!-- <link rel="stylesheet" href="{% static 'css/buttons.css' %}" /> -->
+    <style>
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .button-87 {
+        height: 67px;
+      }
+
+      :root {
+        --background-color1: #fafaff;
+        /* --background-color2: #17252a; */
+        --background-color3: #ededed;
+        --background-color4: #feffff;
+        --primary-color: #3aafa9;
+        --secondary-color: #3aafa9;
+        --Border-color: #3aafa9;
+        --one-use-color: #3aafa9;
+        --two-use-color: #3aafa9;
+      }
+
+      body {
+        background-color: var(--background-color4);
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      header {
+        height: 80px;
+        width: 100vw;
+        padding: 0 30px;
+        background-color: var(--background-color1);
+        position: fixed;
+        z-index: 100;
+        box-shadow: 1px 1px 15px #3aafa9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 27px;
+        font-weight: 600;
+        color: #3aafa9;
+      }
+
+      .icn {
+        height: 30px;
+      }
+
+      .menuicn {
+        cursor: pointer;
+      }
+
+      .searchbar,
+      .message,
+      .logosec {
+        display: flex;
+
+        align-items: s;
+        justify-content: center;
+      }
+
+      .searchbar2 {
+        display: none;
+      }
+
+      .logosec {
+        gap: 60px;
+      }
+
+      .main-container {
+        display: flex;
+        width: 100vw;
+        position: relative;
+        top: 70px;
+        z-index: 1;
+      }
+
+      .dpicn {
+        height: 42px;
+      }
+
+      .main {
+        height: calc(100vh - 70px);
+        width: 104%;
+        margin-left: -5%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        /* padding: 0px 3px 0px 30px; */
+      }
+
+      .main::-webkit-scrollbar-thumb {
+        background-image: linear-gradient(
+          to bottom,
+          rgb(0, 0, 85),
+          rgb(0, 0, 50)
+        );
+      }
+
+      .main::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .main::-webkit-scrollbar-track {
+        background-color: #9e9e9eb2;
+      }
+
+      .box-container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1px;
+      }
+
+      .nav {
+        min-height: 91vh;
+        width: 250px;
+        background-color: var(--background-color2);
+        position: absolute;
+        top: 0px;
+        left: 00;
+        box-shadow: #3aafa9;
+        /* box-shadow: 1px 1px 10px rgba(198, 189, 248, 0.825); */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        padding: 30px 0 20px 10px;
+      }
+
+      .navcontainer {
+        height: calc(100vh - 70px);
+        width: 270px;
+        position: relative;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 3px 3px 10px #2b7a78;
+      }
+
+      .navcontainer::-webkit-scrollbar {
+        display: none;
+      }
+
+      .navclose {
+        width: 80px;
+      }
+
+      .nav-option {
+        width: 250px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        padding: 0 30px 0 20px;
+        gap: 20px;
+        transition: all 0.1s ease-in-out;
+      }
+
+      .nav-option:hover {
+        border-left: 5px solid #010058af;
+        /* background-color: #c4bfbf; */
+        background-color: #3aafa9;
+        cursor: pointer;
+      }
+
+      .nav-img {
+        height: 38px;
+        border-radius: 38px;
+      }
+
+      .nav-upper-options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        font-size: 10px;
+      }
+
+      .option1 {
+        /* border-left: 5px solid #010058af; */
+        /* background-color: var(--Border-color); */
+        color: black;
+        cursor: pointer;
+      }
+
+      /* .option1:hover {
+	border-left: 5px solid #010058af;
+	background-color: var(--Border-color);
+} */
+
+      .box {
+        height: 130px;
+        width: 230px;
+        border-radius: 20px;
+        box-shadow: 3px 3px 10px #2b7a78;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .box:hover {
+        transform: scale(1.08);
+      }
+
+      .box:nth-child(1) {
+        background-color: var(--one-use-color);
+      }
+
+      .box:nth-child(2) {
+        background-color: var(--two-use-color);
+      }
+
+      .box:nth-child(3) {
+        background-color: var(--one-use-color);
+      }
+
+      .box:nth-child(4) {
+        background-color: var(--two-use-color);
+      }
+
+      .box img {
+        height: 50px;
+      }
+
+      .box .text {
+        color: white;
+      }
+
+      .topic {
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 1px;
+      }
+
+      .topic-heading {
+        font-size: 30px;
+        letter-spacing: 3px;
+      }
+
+      .report-container {
+        min-height: 300px;
+        max-width: 1200px;
+        margin: 70px auto 0px auto;
+        background-color: #ffffff;
+        border-radius: 30px;
+        box-shadow: 3px 3px 10px rgb(188, 188, 188);
+        padding: 0px 20px 20px 20px;
+      }
+
+      .report-header {
+        height: 80px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 20px 10px 20px;
+
+        border-bottom: 2px solid #3aafa9;
+      }
+
+      .recent-Articles {
+        font-size: 30px;
+        font-weight: 600;
+        color: #3aafa9;
+      }
+
+      .view {
+        height: 35px;
+        width: 90px;
+        border-radius: 8px;
+        background-color: #3aafa9;
+        color: white;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .report-body {
+        max-width: 1160px;
+        overflow-x: auto;
+        padding: 20px;
+      }
+
+      .item1 {
+        width: 1120px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .t-op {
+        font-size: 18px;
+        letter-spacing: 0px;
+        color: #3aafa9;
+      }
+
+      .items {
+        width: 1120px;
+        margin-top: 15px;
+      }
+
+      .item1 {
+        margin-top: 20px;
+      }
+
+      .t-op-nextlvl {
+        font-size: 14px;
+        letter-spacing: 0px;
+        font-weight: 600;
+      }
+
+      .label-tag {
+        width: 100px;
+        text-align: center;
+        background-color: rgb(0, 177, 0);
+        color: white;
+        border-radius: 4px;
+      }
+
+      .label-tag1 {
+        width: 100px;
+        text-align: center;
+        background-color: rgb(205, 18, 18);
+        color: white;
+        border-radius: 4px;
+      }
+
+      .text {
+        font-size: large;
+      }
+
+      .button-87 {
+        height: 67px;
+      }
+
+      /* CSS */
+      .button-87 {
+        height: 67px;
+        width: 230px;
+        margin: 10px;
+        padding: 15px 30px;
+        text-align: center;
+        /* text-transform: uppercase; */
+        transition: 0.5s;
+        background-size: 200% auto;
+        color: white;
+        border-radius: 10px;
+        display: block;
+        border: 0px;
+        font-weight: 700;
+        box-shadow: 0px 0px 14px -7px #2b7a78;
+        background-image: linear-gradient(45deg);
+        background-image: linear-gradient(
+          45deg,
+          #2b7a78 0%,
+          #61bcb3 51%,
+          #2b7a78 100%
+        );
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+
+      .button-container {
+        display: flex;
+        margin-left: -10%;
+        margin-top: 200px;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        gap: 0px;
+      }
+
+      .button-87:hover {
+        background-position: right center;
+        /* change the direction of the change here */
+        color: #b8d8d7;
+        text-decoration: none;
+        transform: scale(1.05) rotate(-1deg);
+      }
+
+      .button-87:active {
+        transform: scale(0.95);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <div class="main">
+        <!-- <center>
+                <h1 style="color: #3aafa9">Time Tabel</h1>
+                <h3></h3>
+                <embed src="FIRST EVEN SEM Class Test Time table MAY 2022-23.pdf" width="800" height="500">
+            </center> -->
+
+        <!-- <div class="box-container">
+
+                <div class="box box1">
+                    <div class="text">
+                        <h2 class="topic-heading">-</h2>
+                        <h2 class="topic">Total Room</h2>
+                    </div>
+                    <img src="" alt="total">
+                </div>
+                <div class="box box2">
+                    <div class="text">
+                        <h2 class="topic-heading">-</h2>
+                        <h2 class="topic">Available Room</h2>
+                    </div>
+                    <img src="" alt="room">
+                </div>
+                <div class="box box3">
+                    <div class="text">
+                        <h2 class="topic-heading">-</h2>
+                        <h2 class="topic">Total Allotment Room</h2>
+                    </div>
+                    <img src="" alt="room">
+                </div>
+            </div> -->
+            <h3 style="text-align: center;">Exam management</h3>
+        <div class="button-container">
+          <button
+            class="button-87"
+            onclick="window.location.href='{% url 'autoinsert' %}';"
+            role="button"
+          >
+            Auto Insertion
+          </button>
+          <button
+            class="button-87"
+            onclick="window.location.href='{% url 'manualinsert' %}';"
+            role="button"
+          >
+            Manual Insertion
+          </button>
+        </div>
+        {% if messages %} 
+        {% for message in messages %} 
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger" role="alert">{{message}}</div>
+        {% endif %}
+        {% endfor %}
+        {% endif %} 
+        <div>
+         
+          {% if messages %} 
+          {% for message in messages %} 
+          {% if message.tags == 'success' %}
+          <div class="alert alert-success" role="alert">{{message}}</div>
+          {% endif %} 
+          {% endfor %} 
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    setTimeout(function () {
+      document.querySelectorAll(".alert-danger").forEach(function (element) {
+        element.style.display = "none";
+      });
+    }, 5000);
+  </script>
+</html>
+{% endblock body %}

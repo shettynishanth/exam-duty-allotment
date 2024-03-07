@@ -1,0 +1,58 @@
+{% extends 'userpage.html' %} {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/css2.css" />
+    <link rel="stylesheet" href="/static/css/css3.css" />
+    <link rel="stylesheet" href="/static/css/boot.css" />
+    <style>
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .white-table {
+        background-color: white;
+        color: rgb(27, 26, 26);
+      }
+
+      .white-table th,
+      .white-table td {
+        border: 1px solid black;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="report-container">
+        <div class="report-header">
+          <h1 class="recent-Articles">Your Duty At</h1>
+        </div>
+
+        <div class="report-body">
+          <table class="white-table">
+            <tr>
+              <th>dept</th>
+              <th>roomno</th>
+              <th>date</th>
+              <th>time</th>
+              <th>subject name</th>
+            </tr>
+            <tr>
+              <td>{{dep}}</td>
+              <td>{{roomno}}</td>
+              <td>{{date}}</td>
+              <td>{{time}}</td>
+              <td>{{subname}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock body %}

@@ -1,0 +1,147 @@
+{% extends 'userpage.html' %} {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>menu</title>
+    <link rel="stylesheet" href="/static/css/2.css" />
+    <link rel="stylesheet" href="/static/css/3.css" />
+    <link rel="stylesheet" href="/static/css/boot.css" />
+    <link rel="stylesheet" href="/static/css/profile.css" />
+    <style>
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .error{
+        color:red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="im">
+        <div class="imageb">
+          <img src="/static/images/undraw_Filter_re_sa16.png" alt="" />
+        </div>
+        <div class="center">
+          <!-- <div class="pp">
+                    <img src="profile1.png" alt="">
+                </div> -->
+          <h1>Profile</h1>
+
+          <form method="post" onsubmit="return validateForm()" action="profilesaved/{{profileobj.staff_id}}">
+            {% csrf_token %}
+            <div class="txt_field">
+              <span></span>
+              <input type="text" name="tname" value="{{profileobj.name}}" id="name"/>
+              <label>Name</label>
+            </div>
+            <p id="name_error" class="error"></p>
+            <div class="txt_field">
+              <span></span>
+              <input type="text" name="temail" value="{{profileobj.email}}" id="email"/>
+              <label>Email</label>
+            </div>
+            <p id="email_error" class="error"></p>
+            <div class="txt_field">
+              <span></span>
+              <input type="text" name="tphone" value="{{profileobj.phone}}" id="phone" />
+              <label>Phone Number</label>
+            </div>
+            <p id="phn_error" class="error"></p>
+            <div class="txt_field">
+              <span></span>
+              <input
+        type="text"
+        name="tdept"
+        value="{{profileobj.department}}" id="dept"
+      />
+              <label>Department</label>
+            </div>
+            <p id="dept_error" class="error"></p>
+            {% if messages %}
+          {% for message in messages %}
+          {% if message.tags == 'success' %}
+          <div class="alert alert-success" role="alert">
+              {{message}}
+          </div>
+              {% endif %}
+          {% endfor %}
+          {% endif %}
+            <input type="submit" value="Save" />
+            <br /><br />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/js/vendor.bundle.base.js"></script>
+
+    <script src="/static/js/index.js">
+      let menuicn = document.querySelector(".menuicn");
+      let nav = document.querySelector(".navcontainer");
+
+      menuicn.addEventListener("click", () => {
+          nav.classList.toggle("navclose");
+      })
+
+    
+
+    </script>
+    <script>
+            function validateForm() {
+ // Prevent the form from submitting by default
+    // event.preventDefault();
+
+    // Get form input values
+    var roomno = document.getElementById("name");
+    var roomloc = document.getElementById("email");
+    var roomno1 = document.getElementById("phone");
+    var roomloc1 = document.getElementById("dept");
+
+
+        var name_Error = document.getElementById("name_error");
+        var no_Error= document.getElementById("email_error");
+        var name_Error1 = document.getElementById("phn_error");
+        var no_Error1= document.getElementById("dept_error");
+
+        name_Error.innerHTML="";
+        no_Error.innerHTML="";
+        name_Error1.innerHTML="";
+        no_Error1.innerHTML="";
+
+        
+    // Perform validation
+    if (roomno.value === "") {
+      name_Error.innerHTML="please enter the name ";
+      return false;
+    }
+    
+    if (roomloc.value === "" || roomloc.value === " ") {
+      no_Error.innerHTML="please enter the email";
+        return false;
+    }
+
+    if (roomno1.value === "" ) {
+      name_Error1.innerHTML="please enter the phone number ";
+      return false;
+    }
+    
+    if (roomloc1.value === "" || roomloc1.value === " ") {
+      no_Error1.innerHTML="please enter the department";
+        return false;
+    }
+
+
+    // Additional validation logic...
+
+    return true;
+}
+    </script>
+  </body>
+</html>
+{% endblock body %}

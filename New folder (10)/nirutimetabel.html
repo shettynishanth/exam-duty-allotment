@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>time tabel</title>
+    <!-- <link rel="stylesheet" href="css/romm.css"> -->
+    <link rel="stylesheet" href="css/2.css">
+    <link rel="stylesheet" href="css/3.css">
+    <link rel="stylesheet" href="css/boot.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <style>
+        a{
+                text-decoration: none;
+                color: inherit;
+            }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <!-- <div class="logosec">
+            <div class="logo"></div>
+            <img src="" class="icn menuicn" id="menuicn" alt="menu-icon">
+        </div> -->
+
+        <div class="logo">
+            exam Management
+        </div>
+    </header>
+
+
+    <div class="main-container">
+
+        <div class="navcontainer">
+            <nav class="nav">
+                <div class="nav-upper-options">
+                    <div class="nav-option option1">
+                        <img src="image/smart-house.gif" class="nav-img" alt="home">
+                        <a class="link1" href="1menu.html"><h3 class="text">
+                        <h3 class="text"> home</h3></a>
+                    </div>
+
+
+                    <div class="option2 nav-option">
+                        <img src="image/locker-room.gif" class="nav-img" alt="room">
+                        <a class="link1" href="roommanagement.html"><h3 class="text">room management</h3></a>
+                    </div>
+
+                    <div class="nav-option option3">
+                        <img src="image/user.gif" class="nav-img" alt="staff">
+                        <a class="link1" href="staffmang.html"><h3 class="text">staff management</h3></a>
+                    </div>
+
+                    <div class="nav-option option4">
+                        <img src="image/book.gif" class="nav-img" alt="exam">
+                        <a class="link1" href="exammang.html"><h3 class="text">exam management</h3></a>
+                    </div>
+                    <div class="nav-option option4">
+                        <img src="image/math.gif" class="nav-img" alt="exam">
+                        <a class="link1" href="exammang.html"><h3 class="text">subject management</h3></a>
+                    </div>
+
+                    <div class="nav-option option5">
+                        <img src="image/books.gif" class="nav-img" alt="status">
+                        <h3 class="text"> status</h3>
+                    </div>
+
+
+
+                    <div class="nav-option logout">
+                        <img src="image/logout.gif" class="nav-img" alt="logout">
+                        <a href="login1.html"><h3 class="text">Logout</h3></a>
+
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+
+        <div class="main">
+            <center>
+                <h1 style="color: #3aafa9">Time Tabel</h1>
+                <input type="file" id="fileInput" class="button-87">
+    <embed id="embedElement" src="" type="" width="800" height="500">
+        
+        <!-- <button type="file" id="fileButton" class="button-87" role="button">Automatic Timetabel</button> -->
+    </center>
+
+
+            <!-- <div class="box-container">
+
+                <div class="box box1">
+                    <div class="text">
+                        <h2 class="topic-heading">-</h2>
+                        <h2 class="topic">Total Room</h2>
+                    </div>
+                    <img src="" alt="total">
+                </div>
+                <div class="box box2">
+                    <div class="text">
+                        <h2 class="topic-heading">-</h2>
+                        <h2 class="topic">Available Room</h2>
+                    </div>
+                    <img src="" alt="room">
+                </div>
+                <div class="box box3">
+                    <div class="text">
+                        <h2 class="topic-heading">-</h2>
+                        <h2 class="topic">Total Allotment Room</h2>
+                    </div>
+                    <img src="" alt="room">
+                </div>
+            </div> -->
+            <div class="button-container">
+
+                <button class="button-87" role="button">Automatic Timetabel</button>
+                <button class="button-87" role="button">Manual timetabel</button>
+                
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById("fileInput").addEventListener("change", function(e) {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+    
+        reader.onload = function(e) {
+            var fileContent = e.target.result;
+            document.getElementById("embedElement").src = fileContent;
+            document.getElementById("embedElement").type = file.type;
+        };
+    
+        reader.readAsDataURL(file);
+    });
+    </script>
+</html>

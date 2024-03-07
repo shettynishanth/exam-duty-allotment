@@ -1,0 +1,264 @@
+{% extends 'index.html' %} {% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subjec Add</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/2.css">
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+
+    background-color: #feffff;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .im {
+    position: relative;
+    left: 10%;
+    top: 60px;
+    width: 100%;
+    height: 93%;
+    border: 1px solid white;
+    /* border-radius: 16px; */
+    background-color: white;
+  }
+
+  img {
+    height: 600px;
+    width: 800px;
+    border-radius: 20px;
+  }
+
+  .im .center {
+    position: absolute;
+    top: 40%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .center h1 {
+    text-align: center;
+    padding: 20px 0;
+    /* border-bottom: 1px solid silver; */
+  }
+
+  .center form {
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+
+  form .txt_field {
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+  }
+
+  .txt_field input {
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+  }
+
+  .txt_field label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: 1s;
+  }
+
+  .txt_field span::before {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2691d9;
+    transition: 0.5s;
+  }
+
+  .txt_field input:focus~label,
+  .txt_field input:valid~label {
+    top: -5px;
+    color: #2691d9;
+  }
+
+  .txt_field input:focus~span::before,
+  .txt_field input:valid~span::before {
+    width: 100%;
+  }
+
+  .pass {
+    margin: -5px 0 20px 5px;
+    color: #a6a6a6;
+    cursor: pointer;
+  }
+
+  .pass:hover {
+    text-decoration: underline;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    height: 45px;
+    border: 1px solid;
+    background: #17252a;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+  }
+  .error{
+    color: red;
+  }
+
+  input[type="submit"]:hover {
+    border-color: #2691d9;
+    transition: 0.5s;
+  }
+
+  .formerror {
+    color: red;
+  }
+</style>
+
+<body>
+  <div class="im">
+    <div class="image"><img src="/static/images/s7.png" alt="" />
+      <div class="center">
+        <h1>Add Subject</h1>
+        <form method="POST" name="myForm" action="/subjectadd" onsubmit="return validateForm()">
+          {% csrf_token %}
+          <div class="txt_field">
+            <span></span>
+            <input type="text" name="subid" id="subid" />
+            <label>subid</label>
+          </div>
+          {% if messages %}
+          {% for message in messages %}
+          {% if message.tags == 'error' %}
+          <div class="alert alert-danger" role="alert">
+              {{message}}
+          </div>
+              {% endif %}
+          {% endfor %}
+          {% endif %}
+          <p id="subid_error" class="error"></p>
+          <div class="txt_field">
+            <span></span>
+            <input type="text" name="subcode" id="subcode" />
+            <label>Subcode</label>
+          </div>
+          <p id="subcode_error" class="error"></p>
+          <div class="txt_field">
+            <span></span>
+            <input type="text" name="subname" id="subname" />
+            <label>Sub Name</label>
+          </div>
+          <p id="subname_error" class="error"></p>
+          <div class="txt_field">
+            <span></span>
+            <input type="text" name="stream" id="stream" />
+            <label>Stream</label>
+          </div>
+          <p id="substream_error" class="error"></p>
+          {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" role="alert">
+                            {{message}}
+                        </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+          <input type="submit" value="submit" />
+          <br /><br />
+        </form>
+      </div>
+    </div>
+  </div>
+  <a href="/home">home</a>
+</body>
+<script src="/static/js/bootstrap.min.js"></script>
+<script>
+          setTimeout(function() {
+        document.querySelectorAll('.alert-danger').forEach(function(element) {
+            element.style.display = 'none';
+        });
+    }, 5000);
+    function validateForm() {
+ // Prevent the form from submitting by default
+    // event.preventDefault();
+
+    // Get form input values
+    var roomno = document.getElementById("subid");
+    var roomloc = document.getElementById("subcode");
+    var dept = document.getElementById("subname");
+    var dept1 = document.getElementById("stream");
+
+        console.log(roomloc.value)
+        var name_Error = document.getElementById("subid_error");
+        var no_Error= document.getElementById("subcode_error");
+        var dept_Error= document.getElementById("subname_error");
+        var dept_Error1= document.getElementById("substream_error");
+        name_Error.innerHTML="";
+        no_Error.innerHTML="";
+        dept_Error.innerHTML="";
+        dept_Error1.innerHTML="";
+        
+    // Perform validation
+    if (roomno.value === "") {
+      name_Error.innerHTML="please enter the subject id ";
+        return false;
+    }
+    
+    if (roomloc.value === "" || roomloc.value === " ") {
+        no_Error.innerHTML="please enter the subject code";
+        return false;
+    }
+    if (dept.value === "" || dept.value === " ") {
+        dept_Error.innerHTML="please enter the subject name"
+        return false;
+    }
+    if (dept1.value === "" || dept1.value === " ") {
+        dept_Error1.innerHTML="please enter the stream"
+        return false;
+    }
+
+
+    // Additional validation logic...
+
+    return true;
+}
+  
+</script>
+</html>
+{% endblock body %}

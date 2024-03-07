@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>menu</title>
+    <link rel="stylesheet" href="/static/css/css2.css" />
+    <link rel="stylesheet" href="/static/css/css3.css" />
+    <link rel="stylesheet" href="/static/css/boot.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      html {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">Bhandarkars arts and since college kundapura</div>
+      <div class="logo">
+        {{request.user}}
+      </div>
+    </header>
+
+    <div class="main-container">
+      <div class="navcontainer">
+        <nav class="nav">
+          <div class="nav-upper-options">
+            <a href="userhome">
+              <div class="nav-option option1">
+                <img
+                  src="/static/images/smart-house.gif"
+                  class="nav-img"
+                  alt="home"
+                />
+                <h3 class="text">Home</h3>
+              </div>
+            </a>
+
+            <a href="profile">
+              <div class="option2 nav-option">
+                <img
+                  src="/static/images/profile2.png"
+                  class="nav-img"
+                  alt="room"
+                />
+                <h3 class="text">Profile</h3>
+              </div>
+            </a>
+
+            <a href="changepassword">
+              <div class="nav-option option3">
+                <img
+                  src="/static/images/password.gif"
+                  class="nav-img"
+                  alt="staff"
+                />
+                <h3 class="text">Change Password</h3>
+              </div>
+            </a>
+
+            <a href="logout">
+              <div class="line">
+                <div class="nav-option logout">
+                  <img
+                    src="/static/images/logout.gif"
+                    class="nav-img"
+                    alt="logout"
+                  />
+                  <h3 class="text">Logout</h3>
+                </div>
+              </div>
+            </a>
+          </div>
+        </nav>
+      </div>
+
+      {% block body %}
+
+      {% endblock body %}
+    </div>
+
+    <script src="/static/js/vendor.bundle.base.js"></script>
+
+    <script src="/static/js/index.js">
+      let menuicn = document.querySelector(".menuicn");
+      let nav = document.querySelector(".navcontainer");
+
+      menuicn.addEventListener("click", () => {
+          nav.classList.toggle("navclose");
+      })
+    </script>
+  </body>
+</html>
